@@ -52,10 +52,15 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'tango_with_django_project.urls'
 
+#BASE_DIR contains <workspace>/tango_with_django_project/
+#Then TEMPLATE_DIR is now BASE_DIR/templates by used os.path.join method
+#!!!!Here is different to book
+TEMPLATE_DIR = os.path.join(BASE_DIR,'tango_with_django_project/templates')
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATE_DIR,],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,6 +72,11 @@ TEMPLATES = [
         },
     },
 ]
+
+print(__file__)
+print(os.path.dirname(__file__))
+print(os.path.dirname(os.path.dirname(__file__)))
+
 
 WSGI_APPLICATION = 'tango_with_django_project.wsgi.application'
 
