@@ -13,13 +13,13 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-STATIC_DIR = os.path.join(BASE_DIR,'tango_with_django_project/static')
-TEMPLATE_DIR = os.path.join(BASE_DIR,'tango_with_django_project/templates')
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_DIR = os.path.join(BASE_DIR,'static')
+TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
+STATICFILES_DIRS = [STATIC_DIR, ]
 MEDIA_DIR = os.path.join(BASE_DIR,"media")
 
-
-
+STATIC_URL = '/static/'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
@@ -104,7 +104,7 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
+print(BASE_DIR)
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
