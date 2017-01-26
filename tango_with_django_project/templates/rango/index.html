@@ -5,20 +5,25 @@
 <html>
 	<head>
 		<title>Rango</title>
-		<!--CSS-->
-		<link rel="stylesheet" href="{% static "css/base.css" %}" />
-		<!--Image-->
-		<script src="{% static "js/jquery.js" %}"> </script>
 	</head>
 	
 	<body>
 		<h1>Rango Says...</h1>
+		<div>hey ther partner!</div>
+		
 		<div>
-			hey ther partner! <br/>
-			<strong>{{boldmessage}}</strong><br/>
+		{%if categories %}
+		<ul>
+			{% for category in categories %}
+				<li>{{category.name}}</li>
+			{% endfor %}
+		<ul/>
+		{% else %}
+			<strong>There are no categories present.</strong>
+		{% endif %}
 		</div>
 		<div>
-			<a href="/rango/about/">About</a><br/>
+			<a href="/rango/about/">About Rango</a><br/>
 			<img src="{% static "images/rango.jpg" %}" alt="Picture of Rango" /><!--New line-->
 		</div>
 	</body>

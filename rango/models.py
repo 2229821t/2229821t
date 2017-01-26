@@ -1,12 +1,36 @@
 from __future__ import unicode_literals
-
+from django.template.defaultfilters import slugify
 from django.db import models
+from rango.models import page
 
+slug = models.SlugField(blank=True)
+slug = models.SlugField(unique=True)
 # Create your models here.
+
+def show_category(request, category_name_slug):
+    context_dict = {}
+
+    try:
+        category = Category.objects.get(slug = category_name_slug)
+        pages = Page.objects.filter(category=category)
+        context_dict['pages']=pages
+        context_dict['category']=category
+    except Category.DoesNotExist:
+        context_dict['category']=None
+        context_dict['pages']=None
+    return render(request, 'rango/category.html', context_dict)
+
+
 class Category(models.Model):
     name = models.CharField(max_length=128, unique=True)
     views = models.IntegerField(default = 0)
     likes = models.IntegerField(default = 0)
+    slug = models.SlugField()
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(Category, self).save(*args, **kwargs)
+
     class Meta:
         verbose_name_plural = "Categories"
 
