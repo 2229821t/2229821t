@@ -6,4 +6,7 @@ urlpatterns = [
     url(r'^about/',views.about,name='about'),
     url(r'^category/(?P<category_name_slug>[\w\-]+)/$',
         views.show_category, name='show_category'),
+    url(r'^page/(?P<page_name_slug>[\w\-]+)/$',
+        views.show_page,name='show_page')
+
 ]
