@@ -45,7 +45,7 @@ class Page(models.Model):
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
-        super(Category, self).save(*args, **kwargs)
+        super(Page, self).save(*args, **kwargs)
 
     # For Python 2, use __unicode__ too
     def __str__(self):
