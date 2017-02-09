@@ -11,7 +11,7 @@ def populate():
     python_pages = [
         {"title": "Official Python Tutorial",
 		"url": "http://docs.python.org/2/tutorial",
-		views:0},
+		"views":0},
         {"title": "How to Think like a Computer Scientist",
          "url": "http://www.greenteapress.com/thinkpython/",
 		 "views":99},
@@ -45,7 +45,8 @@ def populate():
     for cat, cat_data in cats.items():
         c = add_cat(cat)
         for p in cat_data["pages"]:
-            add_page(c, p["title"], p["url"], p["views"],p["likes"])
+            print(p)
+            add_page(c, p["title"], p["url"], p["views"])
 
         # Print out the categories we have added.
     for c in Category.objects.all():
